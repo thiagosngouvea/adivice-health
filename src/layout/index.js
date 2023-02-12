@@ -11,10 +11,10 @@ export default function Layout ({ children }) {
                 <NavbarLayout />
             </Row>
             <Row>
-                <Col xs={2}>
+                <Col xs={1}>
                     <Sidebar />
                 </Col>
-                <Col xs={10}>
+                <Col xs={11}>
                     <div>{children}</div>
                 </Col>
             </Row>

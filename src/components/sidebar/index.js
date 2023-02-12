@@ -21,7 +21,7 @@ export function Sidebar() {
         // nao cobrir a navbar
         style={{ 
           marginTop: 56,
-          background: "#2c3e50",
+          background: "#212529",
          }}
         >
         <SideNav.Toggle

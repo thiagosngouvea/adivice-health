@@ -186,7 +186,6 @@ export function CalendarSchedule() {
     const [showModal, setShowModal] = useState(false);
     const [username, setUsername] = useState('');
 
-    console.log('username', username);
     const closeModal = closeModalOpen => {
         setShowModal(closeModalOpen);
     };
@@ -212,7 +211,7 @@ export function CalendarSchedule() {
             localizer={localizer}
             defaultDate={new Date()}
             defaultView='month'
-            style={{ height: 500, width: '100%' }}
+            style={{ height: 400, width: '100%' }}
             startAccessor="start"
             endAccessor="end"
             selectable={true}

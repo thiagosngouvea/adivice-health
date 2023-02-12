@@ -3,10 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 export function ModalCentralizado(props) {
-    // const [modalShow, setModalShow] = useState(false);
 
-    console.log('modalShow',props);
-    console.log('modalShow22222',props.showModal);
     const handleCloseModal = () => {
         props.closeModal(false);
     }
@@ -30,9 +27,6 @@ export function ModalCentralizado(props) {
             {props.content}
         </div>
       </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={handleCloseModal}>Close</Button>
-      </Modal.Footer>
     </Modal>
   );
 }

@@ -1,24 +1,42 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Container, Row, Col, Stack } from "react-bootstrap";
 import { CalendarSchedule } from "@/components/calendar";
 import { CardDashboard } from "@/components/cardDashboard";
 import { TableReminders } from "@/components/tableReminders";
-import { PatientsList } from "@/components/patientsList";
-import { handleGet } from "@/pages/api/pacientes";
+import { AppointmentList } from "@/components/appointmentsList";
+import { GlobalContext } from "@/context/GlobalContext";
+import { handleGet } from "@/pages/api/consultas";
 
 export default function Dashboard() {
-    const [pacientes, setPacientes] = useState([]);
+    const { updateConsultas } = useContext(GlobalContext);
+    const { consultas, setConsultas } = useContext(GlobalContext);	
+    const [totalConsultas, setTotalConsultas] = useState(0);
 
-    useEffect(() => {
-    async function getPacientes() {
-        const response = await handleGet();
-        setPacientes(response.data);
+    const calcularTotalConsultas = () => {
+        let total = 0;
+        consultas.forEach(consulta => {
+            total += consulta.valorConsulta;
+        });
+        setTotalConsultas(total);
     }
 
-    getPacientes();
-    }, []);
+    useEffect(() => {
+        calcularTotalConsultas();
+    }, [updateConsultas]);
 
-    console.log(`PACIENTES`,pacientes);
+    const consultasFinalizadas = consultas.filter(consulta => consulta.status === "Finalizado");
+
+    console.log(consultasFinalizadas);
+
+    useEffect(() => {
+    async function getConsultas() {
+        const response = await handleGet();
+        setConsultas(response.data);
+    }
+
+    getConsultas();
+    }, [updateConsultas]);
+
 
     return (
         <Container fluid={true}>
@@ -28,7 +46,7 @@ export default function Dashboard() {
                         <Col xs={6}>
                             <CardDashboard
                                 title="Faturamento"
-                                value="R$ 10.000,00"
+                                value={`R$ ${totalConsultas}`}
                                 height="16.7rem"
                                 width="100%"
                                 backgroundColorHeader="#28a745"
@@ -47,7 +65,7 @@ export default function Dashboard() {
                             <Stack gap={4}>
                                 <CardDashboard
                                     title="Agendamentos"
-                                    value="10"
+                                    value={consultas.length}
                                     width="100%"
                                     backgroundColorHeader="#007bff"
                                     colorHeader="#fff"
@@ -62,7 +80,7 @@ export default function Dashboard() {
                                 />
                                 <CardDashboard
                                     title="Atendimentos"
-                                    value="10"
+                                    value={consultasFinalizadas.length}
                                     width="100%"
                                     backgroundColorHeader="#dc3545"
                                     colorHeader="#fff"
@@ -79,7 +97,7 @@ export default function Dashboard() {
                         </Col>
                     </Row>
                 </Col>
-                <Col xs={6}>
+                <Col xs={6} className="p-4">
                     <CalendarSchedule />
                 </Col>
             </Row>
@@ -88,8 +106,8 @@ export default function Dashboard() {
                     <TableReminders />
                 </Col>
                 <Col xs={6}>
-                    <PatientsList
-                        patients={pacientes}
+                    <AppointmentList
+                        appointments={consultas}
                     />
                 </Col>
             </Row>
