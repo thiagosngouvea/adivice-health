@@ -10,10 +10,18 @@
   },
   "dependencies": {
     "@next/font": "13.1.6",
+    "@trendmicro/react-sidenav": "^0.5.0",
+    "bootstrap": "^5.2.3",
     "eslint": "8.33.0",
     "eslint-config-next": "13.1.6",
+    "moment": "^2.29.4",
     "next": "13.1.6",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-big-calendar": "^1.6.3",
+    "react-bootstrap": "^2.7.0",
+    "react-dom": "18.2.0",
+    "react-icons": "^4.7.1",
+    "react-pro-sidebar": "^1.0.0",
+    "reactstrap": "^9.1.5"
   }
 }
