@@ -1,13 +1,7 @@
 import React from "react";
-import { ListGroup, Card, Container, Row } from "react-bootstrap";
+import { ListGroup, Card, Container, Row, Col } from "react-bootstrap";
 
-export function PatientsList() {
-  const patients = [
-    { id: 1, name: "João da Silva", age: 32, description: "Paciente com dor de cabeça" },
-    { id: 2, name: "Maria Rodrigues", age: 44, description: "Paciente com dor de barriga" },
-    { id: 3, name: "Pedro Alves", age: 38, description: "Paciente com dor nas costas" },
-    { id: 4, name: "Ana Paula", age: 27, description: "Paciente com dor de garganta" },
-  ];
+export function PatientsList({ patients }) {
 
   return (
     <Container>
@@ -16,9 +10,30 @@ export function PatientsList() {
           <ListGroup.Item key={patient.id}>
             <Card>
               <Card.Body>
-                <Card.Title>{patient.name}</Card.Title>
-                <Card.Subtitle>{patient.age} anos</Card.Subtitle>
-                <Card.Text>{patient.description}</Card.Text>
+                <Row>
+                  <Col xs={5}>
+                    <Card.Title>{patient.nome}</Card.Title>
+                  </Col>
+                  <Col xs={5}>
+                    <Card.Title>Médico: {patient.medico}</Card.Title>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col xs={5}>
+                    <Card.Subtitle>{patient.idade} anos</Card.Subtitle>
+                  </Col>
+                  <Col xs={5}>
+                    <Card.Subtitle>Data: {patient.dataConsulta} {patient.horaConsulta}</Card.Subtitle>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col xs={5}>
+                    <Card.Text>{patient.queixaPrincipal}</Card.Text>
+                  </Col>
+                  <Col xs={5}>
+                    <Card.Text>{patient.classificacao}</Card.Text>
+                  </Col>
+                </Row>
               </Card.Body>
             </Card>
           </ListGroup.Item>

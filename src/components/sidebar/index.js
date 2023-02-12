@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 
 import SideNav, {
@@ -11,6 +12,8 @@ import SideNav, {
 
 export function Sidebar() {
   const [isVisible, setIsVisible] = useState(true);
+
+  const router = useRouter();
 
     return (
       <SideNav 
@@ -27,20 +30,20 @@ export function Sidebar() {
           }}
         />
         <SideNav.Nav defaultSelected="home">
-          <NavItem eventKey="home">
+          <NavItem eventKey="home" onClick={() => router.push(`/dashboard`)}>
             <NavIcon>
               <i className="fa fa-fw fa-home" style={{ fontSize: "1.75em" }} />
             </NavIcon>
-            <NavText>Home</NavText>
+            <NavText>Dashboard</NavText>
           </NavItem>
-          <NavItem eventKey="placed orders">
+          <NavItem eventKey="placed orders" onClick={() => router.push(`/agendamento`)}>
             <NavIcon>
               <i
                 className="fa fa-fw fa-line-chart"
                 style={{ fontSize: "1.75em" }}
               />
             </NavIcon>
-            <NavText>placed orders</NavText>
+            <NavText>Agendar Consulta</NavText>
           </NavItem>
         </SideNav.Nav>
       </SideNav>

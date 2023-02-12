@@ -191,7 +191,6 @@ export function CalendarSchedule() {
         setShowModal(closeModalOpen);
     };
 
-
     const handleSelect = ({ start, end }) => {
     //   console.log(start);
     //   console.log(end);
