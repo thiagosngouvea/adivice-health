@@ -57,7 +57,7 @@ export function SchedulesList({ agendamentos }){
                         <Col xs={4}>                           
                             <Card.Title className="pt-2 px-2">R$ {agendamento.valorConsulta}</Card.Title>
                             <Card.Subtitle className="pt-2 px-2 justify-between">
-                                <AiFillEdit onClick={() => openModal()}/>
+                                {/* <AiFillEdit onClick={() => openModal()}/> */}
                                 <AiFillDelete style={{ cursor: "pointer" }} onClick={() => deleteSchedule(agendamento.id)} />
                             </Card.Subtitle>
                         </Col>

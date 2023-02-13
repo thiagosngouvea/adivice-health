@@ -18,6 +18,9 @@ export function Sidebar() {
 
   const router = useRouter();
 
+  //pegar o nome da rota atual
+  const route = router.route.replace("/", "");
+
     return (
       <SideNav 
         expanded={isVisible}
@@ -31,20 +34,20 @@ export function Sidebar() {
             setIsVisible(!isVisible);
           }}
         />
-        <SideNav.Nav defaultSelected="home">
-          <NavItem eventKey="home" onClick={() => router.push(`/dashboard`)}>
+        <SideNav.Nav defaultSelected={route}>
+          <NavItem eventKey="dashboard" onClick={() => router.push(`/dashboard`)}>
             <NavIcon>
               <MdOutlineSpaceDashboard style={{ fontSize: "1.75em" }} />
             </NavIcon>
             <NavText>Dashboard</NavText>
           </NavItem>
-          <NavItem eventKey="placed orders" onClick={() => router.push(`/agendamento`)}>
+          <NavItem eventKey="agendamento" onClick={() => router.push(`/agendamento`)}>
             <NavIcon>
               <AiOutlineSchedule style={{ fontSize: "1.75em" }} />
             </NavIcon>
             <NavText>Agendar Consulta</NavText>
           </NavItem>
-          <NavItem eventKey="placed orders" onClick={() => router.push(`/consultar-agendamentos`)}>
+          <NavItem eventKey="consultar-agendamentos" onClick={() => router.push(`/consultar-agendamentos`)}>
             <NavIcon>
               <BsTable style={{ fontSize: "1.75em" }} />
             </NavIcon>

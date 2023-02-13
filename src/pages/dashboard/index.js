@@ -20,13 +20,13 @@ export default function Dashboard() {
         setTotalConsultas(total);
     }
 
+    console.log(consultas);
+
     useEffect(() => {
         calcularTotalConsultas();
-    }, [updateConsultas]);
+    }, [updateConsultas, consultas]);
 
     const consultasFinalizadas = consultas.filter(consulta => consulta.status === "Finalizado");
-
-    console.log(consultasFinalizadas);
 
     useEffect(() => {
     async function getConsultas() {
@@ -45,7 +45,7 @@ export default function Dashboard() {
                     <Row className="my-5">
                         <Col xs={6}>
                             <CardDashboard
-                                title="Faturamento"
+                                title="Faturamento Previsto"
                                 value={`R$ ${totalConsultas}`}
                                 height="16.7rem"
                                 width="100%"
@@ -79,7 +79,7 @@ export default function Dashboard() {
                                     fontSizeTitle="2rem"
                                 />
                                 <CardDashboard
-                                    title="Atendimentos"
+                                    title="Atendimentos Finalizados"
                                     value={consultasFinalizadas.length}
                                     width="100%"
                                     backgroundColorHeader="#dc3545"

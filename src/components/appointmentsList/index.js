@@ -35,12 +35,17 @@ export function AppointmentList({ appointments }) {
                         <Card.Text>{appointment.queixaPrincipal}</Card.Text>
                       </Col>
                       <Col xs={6}>
-                        <Card.Text>{appointment.classificacao}</Card.Text>
+                        <Card.Text>{appointment.status}</Card.Text>
                       </Col>
                     </Row>
                   </Col>
                   <Col xs={4}>
-                    <Card.Title>Valor da Consulta</Card.Title>
+                    <Card.Title 
+                      style={{ 
+                        justifyContent: "center", 
+                        alignItems: "center", 
+                        display: "flex" ,
+                      }}>Valor da Consulta</Card.Title>
                     <Card.Title 
                       style={{ 
                         justifyContent: "center", 

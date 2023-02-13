@@ -75,7 +75,9 @@ export default function Agendamento () {
                             <RegisterFormDoctor />
                         }
                     />
-                    <CalendarSchedule />
+                    <div className="mt-2 px-2">
+                        <CalendarSchedule />
+                    </div>
                 </Col>
                 <Col xs={5} className="mx-5">
                 <Row className="mt-2">

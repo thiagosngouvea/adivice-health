@@ -35,7 +35,7 @@ export function RegisterFormDoctor() {
   };
     const response = await cadastrarMedicos(data);
     if (response.status === 200) {
-      alert("Consulta agendada com sucesso!");
+      alert("Médico registrado com sucesso!");
       setUpdateDoctors(true);
     }
 };

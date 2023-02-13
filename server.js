@@ -116,12 +116,52 @@ app.delete('/api/medicos/:id', (req, res) => {
 
 let eventos = [
   {
-    id: 14,
-    title: "Today",
+    id: "37c3beb4-2bc1-48cb-b3fb-9c395e545ca3",
+    type: "Lembrete",
+    title: "Hoje",
+    descricao: "Lembrete de consulta",
     start: new Date(new Date().setHours(new Date().getHours() - 3)),
     end: new Date(new Date().setHours(new Date().getHours() + 3))
   }
 ];
+
+app.get('/api/eventos', (req, res) => {
+  res.json(eventos);
+});
+
+app.post('/api/eventos', (req, res) => {
+  const evento = req.body;
+  eventos.push(evento);
+  res.json(evento);
+});
+
+app.put('/api/eventos/:id', (req, res) => {
+  const eventoId = parseInt(req.params.id);
+  const eventoIndex = eventos.findIndex((e) => e.id === eventoId);
+
+  if (eventoIndex === -1) {
+    res.status(404).end();
+    return;
+
+  }
+
+  eventos[eventoIndex] = req.body;
+  res.json(eventos[eventoIndex]);
+});
+
+app.delete('/api/eventos/:id', (req, res) => {
+  const eventoId = parseInt(req.params.id);
+  const eventoIndex = eventos.findIndex((e) => e.id === eventoId);
+
+  if (eventoIndex === -1) {
+    res.status(404).end();
+    return;
+  }
+
+  eventos.splice(eventoIndex, 1);
+  res.status(204).end();
+});
+
 
 
 app.listen(3000, () => {

@@ -9,7 +9,7 @@ export const GlobalContextProvider = ({children}) => {
     const [ doctors, setDoctors ] = useState([])
     const [ updateDoctors, setUpdateDoctors ] = useState(false)
     const [ updateConsultas, setUpdateConsultas ] = useState(false)
-    
+    const [ updateEventos, setUpdateEventos ] = useState(false)
 
     return(
       <GlobalContext.Provider value={{ 
@@ -20,7 +20,9 @@ export const GlobalContextProvider = ({children}) => {
             updateDoctors,
             setUpdateDoctors,
             updateConsultas,
-            setUpdateConsultas
+            setUpdateConsultas,
+            updateEventos,
+            setUpdateEventos
             }}
         >
         {children}

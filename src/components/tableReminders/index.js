@@ -1,30 +1,43 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Table, Container } from "react-bootstrap";
+import { getEventos } from "@/pages/api/eventos";
+import { GlobalContext } from "@/context/GlobalContext";
 
 export function TableReminders() {
-  const reminders = [
-    { id: 1, type: "Aviso", description: "Reunião de equipe às 10h" },
-    { id: 2, type: "Lembrete", description: "Comprar pão na volta para casa" },
-    { id: 3, type: "Aviso", description: "Enviar relatório para o chefe até as 17h" },
-    { id: 4, type: "Lembrete", description: "Ligar para a mãe às 19h" },
-  ];
+
+  const [reminders, setReminders] = useState([]);
+  const { updateEventos, setUpdateEventos } = useContext(GlobalContext);
+
+  const buscarEventos = async () => {
+    const response = await getEventos();
+    setReminders(response.data);
+    setUpdateEventos(false);
+  };
+
+  useEffect(() => {
+    buscarEventos();
+  }, [updateEventos]);
+
 
   return (
     <Container>
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>#</th>
+            <th colSpan="2">Lembretes/Avisos</th>
+          </tr>
+          <tr>
             <th>Tipo</th>
+            <th>Titulo</th>
             <th>Descrição</th>
           </tr>
         </thead>
         <tbody>
           {reminders.map((reminder) => (
             <tr key={reminder.id}>
-              <td>{reminder.id}</td>
               <td>{reminder.type}</td>
-              <td>{reminder.description}</td>
+              <td>{reminder.title}</td>
+              <td>{reminder.descricao}</td>
             </tr>
           ))}
         </tbody>
