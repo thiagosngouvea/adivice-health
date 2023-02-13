@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
+import { MdOutlineSpaceDashboard } from "react-icons/md";
+import { AiOutlineSchedule } from "react-icons/ai";
+import { BsTable } from "react-icons/bs";
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 
 import SideNav, {
@@ -11,14 +14,13 @@ import SideNav, {
 } from "@trendmicro/react-sidenav";
 
 export function Sidebar() {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
 
   const router = useRouter();
 
     return (
       <SideNav 
         expanded={isVisible}
-        // nao cobrir a navbar
         style={{ 
           marginTop: 56,
           background: "#212529",
@@ -32,18 +34,21 @@ export function Sidebar() {
         <SideNav.Nav defaultSelected="home">
           <NavItem eventKey="home" onClick={() => router.push(`/dashboard`)}>
             <NavIcon>
-              <i className="fa fa-fw fa-home" style={{ fontSize: "1.75em" }} />
+              <MdOutlineSpaceDashboard style={{ fontSize: "1.75em" }} />
             </NavIcon>
             <NavText>Dashboard</NavText>
           </NavItem>
           <NavItem eventKey="placed orders" onClick={() => router.push(`/agendamento`)}>
             <NavIcon>
-              <i
-                className="fa fa-fw fa-line-chart"
-                style={{ fontSize: "1.75em" }}
-              />
+              <AiOutlineSchedule style={{ fontSize: "1.75em" }} />
             </NavIcon>
             <NavText>Agendar Consulta</NavText>
+          </NavItem>
+          <NavItem eventKey="placed orders" onClick={() => router.push(`/consultar-agendamentos`)}>
+            <NavIcon>
+              <BsTable style={{ fontSize: "1.75em" }} />
+            </NavIcon>
+            <NavText>Consultar Agendamentos</NavText>
           </NavItem>
         </SideNav.Nav>
       </SideNav>

@@ -114,6 +114,15 @@ app.delete('/api/medicos/:id', (req, res) => {
     res.status(204).end();
 });
 
+let eventos = [
+  {
+    id: 14,
+    title: "Today",
+    start: new Date(new Date().setHours(new Date().getHours() - 3)),
+    end: new Date(new Date().setHours(new Date().getHours() + 3))
+  }
+];
+
 
 app.listen(3000, () => {
   console.log('Servidor rodando na porta 3000');

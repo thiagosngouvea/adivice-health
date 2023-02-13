@@ -40,7 +40,7 @@ export function SchedulesList({ agendamentos }){
   return (
     <Container>
       <Row>
-        <ListGroup style={{ height: "300px", overflowY: "scroll" }}>
+        <ListGroup style={{ height: "80vh", overflowY: "scroll" }}>
             {agendamentos.map(agendamento => (
             <Col key={agendamento.id} xs={12}>
                 <Card className="mb-2">
